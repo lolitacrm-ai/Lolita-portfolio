@@ -1,125 +1,548 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lolita Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<title>Lolita Portfolio</title>
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f8f1ee;
-      color: #332925;
-      min-height: 100vh;
-    }
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-    .container {
-      max-width: 500px;
-      margin: 0 auto;
-      padding: 30px 20px;
-      text-align: center;
-    }
+body {
+    font-family: Arial, sans-serif;
+    background: #f8f1ee;
+    color: #332925;
+    min-height: 100vh;
+}
 
-    .logo {
-      font-size: 48px;
-      font-family: cursive;
-      margin-top: 30px;
-      color: #332925;
-    }
+.container {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 30px 20px 40px;
+}
 
-    .heart {
-      color: #c99c91;
-    }
+.page {
+    display: none;
+}
 
-    .subtitle {
-      letter-spacing: 6px;
-      font-size: 20px;
-      margin: 5px 0 15px;
-    }
+.page.active {
+    display: block;
+}
 
-    .intro {
-      font-size: 15px;
-      line-height: 1.6;
-      color: #756761;
-      margin-bottom: 30px;
-    }
+.home {
+    text-align: center;
+}
 
-    .menu {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
+.logo {
+    font-size: 48px;
+    font-family: cursive;
+    margin-top: 30px;
+    color: #332925;
+}
 
-    .button {
-      display: block;
-      padding: 17px;
-      border-radius: 18px;
-      background: #fffaf8;
-      color: #332925;
-      text-decoration: none;
-      font-size: 17px;
-      font-weight: bold;
-      box-shadow: 0 4px 15px rgba(80, 50, 40, 0.08);
-      border: 1px solid #ead8d2;
-    }
+.heart {
+    color: #c99c91;
+}
 
-    .button:hover {
-      background: #f1dfd9;
-    }
+.subtitle {
+    letter-spacing: 6px;
+    font-size: 20px;
+    margin: 5px 0 15px;
+}
 
-    .footer {
-      margin-top: 35px;
-      font-size: 12px;
-      letter-spacing: 2px;
-      color: #9b847c;
-    }
-  </style>
+.intro {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #756761;
+    margin-bottom: 30px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.button {
+    display: block;
+    width: 100%;
+    padding: 17px;
+    border-radius: 18px;
+    background: #fffaf8;
+    color: #332925;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+    border: 1px solid #ead8d2;
+    box-shadow: 0 4px 15px rgba(80, 50, 40, 0.08);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.button:active {
+    transform: scale(0.98);
+    background: #f1dfd9;
+}
+
+.footer {
+    margin-top: 35px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #9b847c;
+}
+
+.page-title {
+    text-align: center;
+    margin: 20px 0 25px;
+}
+
+.page-title h1 {
+    font-family: cursive;
+    font-size: 38px;
+    font-weight: normal;
+}
+
+.page-title p {
+    color: #9b847c;
+    margin-top: 5px;
+}
+
+.back {
+    margin-bottom: 20px;
+    display: inline-block;
+    color: #8f6f66;
+    text-decoration: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.section-title {
+    font-size: 18px;
+    margin: 25px 0 12px;
+    color: #604b44;
+}
+
+.card {
+    background: #fffaf8;
+    border: 1px solid #ead8d2;
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 14px;
+    box-shadow: 0 4px 15px rgba(80, 50, 40, 0.07);
+}
+
+.card h3 {
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+.card p {
+    color: #756761;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.card-button {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 15px;
+    border-radius: 12px;
+    background: #f1dfd9;
+    color: #604b44;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.project-image {
+    width: 100%;
+    border-radius: 14px;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.empty {
+    text-align: center;
+    padding: 35px 20px;
+    color: #9b847c;
+}
+
+.empty-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.contact-button {
+    text-align: center;
+}
+
+.about-text {
+    line-height: 1.7;
+    color: #756761;
+    font-size: 15px;
+}
+
+.review-placeholder {
+    text-align: center;
+    padding: 25px;
+    color: #9b847c;
+}
+
+.review-photo {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.price-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #ead8d2;
+}
+
+.price-item:last-child {
+    border-bottom: none;
+}
+
+.price-name {
+    font-weight: bold;
+}
+
+.price-value {
+    color: #9b7066;
+}
+
+</style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
+
+<!-- HOME -->
+<div id="home" class="page active home">
 
     <div class="logo">
-      Lolita <span class="heart">♡</span>
+        Lolita <span class="heart">♡</span>
     </div>
 
     <div class="subtitle">
-      PORTFOLIO
+        PORTFOLIO
     </div>
 
     <p class="intro">
-      Telegram bots, graphic design, Figma
-      and digital projects.
+        Telegram bots, graphic design, Figma and digital projects.
     </p>
 
     <div class="menu">
 
-      <a href="#" class="button">
-        💼 Portfolio
-      </a>
+        <button class="button" onclick="showPage('portfolio')">
+            💼 Portfolio
+        </button>
 
-      <a href="#" class="button">
-        👩‍💻 About Me
-      </a>
+        <button class="button" onclick="showPage('about')">
+            👩🏻‍💻 About Me
+        </button>
 
-      <a href="#" class="button">
-        💌 Contact
-      </a>
+        <button class="button" onclick="showPage('reviews')">
+            ⭐ Reviews
+        </button>
+
+        <button class="button" onclick="showPage('prices')">
+            💰 Price List
+        </button>
+
+        <button class="button" onclick="showPage('contact')">
+            💌 Contact
+        </button>
 
     </div>
 
     <div class="footer">
-      LET'S CREATE TOGETHER
+        LET'S CREATE TOGETHER
     </div>
 
-  </div>
+</div>
+
+
+<!-- PORTFOLIO -->
+<div id="portfolio" class="page">
+
+    <div class="page-title">
+        <h1>Portfolio ♡</h1>
+        <p>My digital projects</p>
+    </div>
+
+    <div class="back" onclick="showPage('home')">
+        ← Back
+    </div>
+
+
+    <div class="section-title">
+        🤖 Telegram Bots
+    </div>
+
+    <div class="card">
+        <h3>Children's Clothing Bot</h3>
+        <p>
+            Telegram bot for a children's clothing store with categories,
+            products and an ordering flow.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>Curator Bot — From Scratch</h3>
+        <p>
+            Telegram bot created from scratch for a curator project.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>Curator Bot — Improved Version</h3>
+        <p>
+            An existing Telegram bot redesigned and improved with a
+            clearer structure and user flow.
+        </p>
+    </div>
+
+
+    <div class="section-title">
+        📱 Telegram Mini Apps
+    </div>
+
+    <div class="card">
+        <h3>Lolita Portfolio</h3>
+        <p>
+            Interactive Telegram Mini App portfolio built with HTML,
+            CSS and JavaScript.
+        </p>
+
+        <button class="card-button" onclick="showPage('home')">
+            Open project
+        </button>
+    </div>
+
+
+    <div class="section-title">
+        🎨 Graphic Design
+    </div>
+
+    <div class="card">
+
+        <img
+            src="parkour-warrior-thumbnail.png"
+            alt="Minecraft Thumbnail"
+            class="project-image"
+        >
+
+        <h3>Minecraft Thumbnail</h3>
+
+        <p>
+            Gaming thumbnail design created for a Minecraft project.
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <div class="empty">
+            <div class="empty-icon">📱</div>
+            <h3>Phone Case Design</h3>
+
+            <p>
+                Custom smartphone case design project.
+                Preview coming soon.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="section-title">
+        📲 Social Media
+    </div>
+
+    <div class="card">
+
+        <h3>VK Community</h3>
+
+        <p>
+            Visual design and content development for a VK community.
+            The project is currently in progress.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ABOUT -->
+<div id="about" class="page">
+
+    <div class="page-title">
+        <h1>About Me ♡</h1>
+        <p>A little about me</p>
+    </div>
+
+    <div class="back" onclick="showPage('home')">
+        ← Back
+    </div>
+
+    <div class="card">
+
+        <p class="about-text">
+
+            I'm Lolita — a digital creator and beginner developer
+            building practical digital projects.
+
+            <br><br>
+
+            I work with Telegram bots, graphic design, Figma and
+            digital content.
+
+            <br><br>
+
+            I learn by creating real projects and gradually expanding
+            my skills.
+
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- REVIEWS -->
+<div id="reviews" class="page">
+
+    <div class="page-title">
+        <h1>Reviews ♡</h1>
+        <p>What clients say</p>
+    </div>
+
+    <div class="back" onclick="showPage('home')">
+        ← Back
+    </div>
+
+    <div class="card">
+
+        <div class="review-placeholder">
+
+            <div class="empty-icon">
+                ⭐
+            </div>
+
+            <h3>Reviews coming soon</h3>
+
+            <p>
+                Client reviews will appear here.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- PRICE LIST -->
+<div id="prices" class="page">
+
+    <div class="page-title">
+        <h1>Price List ♡</h1>
+        <p>Services and prices</p>
+    </div>
+
+    <div class="back" onclick="showPage('home')">
+        ← Back
+    </div>
+
+    <div class="card">
+
+        <div class="empty">
+
+            <div class="empty-icon">
+                💰
+            </div>
+
+            <h3>Coming soon</h3>
+
+            <p>
+                The price list is currently being prepared.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- CONTACT -->
+<div id="contact" class="page">
+
+    <div class="page-title">
+        <h1>Contact ♡</h1>
+        <p>Let's create something together</p>
+    </div>
+
+    <div class="back" onclick="showPage('home')">
+        ← Back
+    </div>
+
+    <div class="card contact-button">
+
+        <h3>💌 Telegram</h3>
+
+        <p>
+            Feel free to contact me.
+        </p>
+
+        <a
+            class="card-button"
+            href="https://t.me/lolitaell"
+            target="_blank"
+        >
+            @lolitaell
+        </a>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+function showPage(pageId) {
+
+    const pages = document.querySelectorAll('.page');
+
+    pages.forEach(function(page) {
+        page.classList.remove('active');
+    });
+
+    document.getElementById(pageId).classList.add('active');
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+
+}
+
+</script>
 
 </body>
 </html>
